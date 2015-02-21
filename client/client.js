@@ -79,10 +79,10 @@ if (Meteor.isClient) {
 
 }
 
-function make_query_array(filter_array){
+function make_query_array_contains(filter_array){
   var ret = [];
-  var q = new Parse.Query(ResourceData);
   for(var i = 0; i < filter_array.length; i++){
+    var q = new Parse.Query(ResourceData);
     ret.push(q.contains(filter_array[i][0], filter_array[i][1]))
   }
   return ret;
@@ -94,12 +94,14 @@ function resourceQuery(filterStr){
 
       filterStr = filterStr || "Alcohol"
       //query.equalTo(filterStr, true);
-      var contains_array = [['serviceType', 'Alcohol'], ['serviceType', 'Medical']]
-      console.log('creating query array')
-      var query_array = make_query_array(contains_array);
+      var contains_array = [['serviceType', 'Alcohol'], ['serviceTypeOtherInfo', 'Youth']]
+      //var contains_array = [['serviceType', 'Family'], ['serviceTypeOtherType', 'Youth']]
 
-      //var safe_query = new Parse.Query(ResourceData).equalTo(filterStr, true);
+      console.log('creating query array')
+      var query_array = make_query_array_contains(contains_array);
+
       var compound_query_or = Parse.Query.or.apply(null, query_array)
+      //var safe_query = new Parse.Query(ResourceData).equalTo(filterStr, true);
       //var compound_query_or = safe_query
       console.log(compound_query_or)
       compound_query_or.find({
