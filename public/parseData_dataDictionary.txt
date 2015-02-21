@@ -1,0 +1,78 @@
+App name:
+AdvoCode2015
+
+Class/Object name (you will use this to pull data):
+ResourceInfo
+
+Settings:
+Read-Only access
+As a result, you will only be using the get/query/find type of commands.
+
+Notes on data elements:
+Unstructured data elements can still be very important
+There is missing data and some fields will be “undefined”
+Parse also has its own id tag that can be used to directly access records (see parse docs)
+
+
+Data elements:
+element name - description - (data type)
+
+uniqueID - unique ID - (String)
+clinicalResourceName - name of clinical resource - (String)
+serviceType - type of health/wellness resource, i.e., Medical Care Clinic, Mental Health Clinic, Family Services - (String)
+serviceTypeOtherInfo - other unstructured information on the service type - (String)
+address - address - (String)
+city - city name - (String)
+state - state abbrev - (String)
+zipCode - zip code - (String)
+googleMapsLink - link to address on google maps - (String)
+siteOnBusRoute - is the site on a bus route, boolean of true/false - (boolean)
+busRoute - bus route info - (String)
+phoneNum1 - phone number in format (000) 000-0000 - (String)
+phoneNumInfo - additional info on phone number - (String)
+phoneNum1Verified - has this phone number been manually verified, boolean of true/false - (boolean)
+phoneNum2 - a 2nd/alternate phone number in format (000) 000-0000 - (String)
+phoneNum2Info - info on alternate phone num - (String)
+phoneNum2Verified - has alternate phone num been manually verified, boolean of true/false - (boolean)
+website - website URL - (String)
+email - email address - (String)
+otherContactInfo - other unstructured contact info - (String)
+monday - “Open” or “Closed” on monday - (String)
+mondayOpenTime - opening time on monday - (String)
+mondayCloseTime - closing time on monday - (String)
+tuesday - “Open” or “Closed” on tuesday - (String)
+tuesdayOpenTime - opening time on tuesday - (String)
+tuesdayCloseTime - closing time on tuesday - (String)
+wednesday - “Open” or “Closed” on wednesday - (String)
+wednesdayOpenTime - opening time on wednesday - (String)
+wednesdayCloseTime - closing time on wednesday - (String)
+thursday - “Open” or “Closed” on thursday - (String)
+thursdayOpenTime - opening time on thursday - (String)
+thursdayCloseTime - closing time on thursday - (String)
+friday - “Open” or “Closed” on friday - (String)
+fridayOpenTime - opening time on friday - (String)
+fridayCloseTime - closing time on friday - (String)
+saturday - “Open” or “Closed” on saturday - (String)
+saturdayOpenTime - opening time on saturday - (String)
+saturdayCloseTime - closing time on saturday - (String)
+sunday - “Open” or “Closed” on sunday - (String)
+sundayOpenTime - opening time on sunday - (String)
+sundayCloseTime - closing time on sunday - (String)
+otherHoursInfo - other unstructured info on house of operation - (String)
+servicesProvided - information on services provided - (String)
+eligibilityCriteriaAll - tag of whether the eligibility criteria covers all individuals using either “Checked” if the tag All is present or “Unchecked” if the tag All is not present - (String)
+eligibilityCriteriaUninsured - tag of whether the eligibility criteria covers uninsured individuals using either “Checked” if the tag Uninsured is present or “Unchecked” if the tag Uninsured is not present - (String)
+eligibilityCriteriaIncomeDocumentation - tag of whether the eligibility criteria requires individuals to bring documentation of income using either “Checked” or “Unchecked”  - (String)
+eligibilityCriteriaTennCare - tag of whether the eligibility criteria covers TennCare individuals using either “Checked” or “Unchecked” - (String)
+eligibilityCriteriaPrivateInsurance - tag of whether the eligibility criteria covers individuals with private insurance using either “Checked” or “Unchecked” - (String)
+otherEligibilityCriteriaInfo - other unstructured info on eligibility criteria - (String)
+feesSlidingScale - tag (“Checked”/“Unchecked”) on if the site uses a sliding scale fees system - (String)
+feesMinimumPayment - tag (“Checked”/“Unchecked”) on if the site has a minimum fee system - (String)
+feesOtherInfo - other unstructured info on fees - (String)
+languageEnglish - tag (“Checked”/“Unchecked”) on if the site provides english language services - (String)
+languageSpanish - tag (“Checked”/“Unchecked”) on if the site provides spanish language services - (String)
+languageOther - tag (“Checked”/“Unchecked”) on if the site provides other language services - (String)
+languageOtherInfo - other unstructured info on language resources - (String)
+otherTags - other relevant tags often separated by comma or semicolon - (String)
+otherNotes - other unstructured notes on the site - (String)
+imgURL - URL of relevant image file - (String)

@@ -1,0 +1,64 @@
+<head>
+  <title>shade</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  {{> router}}
+</body>
+
+<template name="router">
+  {{view_queries}}
+  {{#if view_queries}}
+    {{> queries}}
+  {{else}}
+    {{> start}}
+  {{/if}}
+</template>
+
+<template name="start">
+  <button>Click To Start</button>
+  <div>
+  <input type='text' id='patientName' placeholder='Patient Name: [First], [Last]' />
+  <input type='button' id='searchPatientBtn' value='Search' />
+  <input type='button' id='createPatientBtn' value='Create New Patient' />
+  </div>
+  <div id="div_patientResults">
+    {{patient_results}}
+    <table class="table_results patients">
+      <tr>
+      <th>Index?!</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Problems</th>
+      </tr>
+    {{#each patient_results}}
+      <tr>
+      <td></td>
+      <td>{{last}}, {{first}}</td>
+      <td>{{email}}</td>
+      <td>{{phone}}</td>
+      <td>
+        {{#each problems}}
+          {{this}},
+        {{/each}}
+      </td>
+      </tr>
+    {{/each}}
+    </table>
+  </div>
+
+</template>
+
+<template name="queries">
+  <div>
+    <input type='text' id='filterForTrue' placeholder='Type a filter!' />
+    <input type='button' id='findResourcesBtn' value='Aww Yiss' />
+    
+    <b>This is an example of querying all resources that have a bus route and outputting the parse id, resource name, and bus route info:</b>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+  </div>
+</template>

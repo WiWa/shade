@@ -1,0 +1,11 @@
+/* CSS declarations go here */
+
+div {
+  border-style: solid;
+  border-width: 1px;
+  border-color: blue;
+}
+
+.patients th {
+  width: 150px;
+}

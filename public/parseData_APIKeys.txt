@@ -1,0 +1,14 @@
+Application ID:
+RATgcQpj491NrNWY52F8qIxzXgrn8p93xm5vw6M6
+
+Client Key:
+AeCQ1nQ7MVw0VB2PSf3K630LUGTYRfVVmnHeqpCf
+
+.NET Key:
+pUdi8m9FUc94WbJfJPfIeOAQfgtjzurXY18Qk7vx
+
+Javascript Key:
+fCcbjceiK60kZv2RYGo9FIx5Ptuuvyb9nfq6po0f
+
+REST API Key:
+ypz62NtR0ssEBWgTf4AUTmXsXsXA3vXv8G1CoKwA
