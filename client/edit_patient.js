@@ -29,7 +29,8 @@ if(Meteor.isClient){
         last: $("#tLast")[0].value,
         email: $("#tEmail")[0].value,
         phone: $("#tPhone")[0].value,
-        address: $("#tAddress")[0].value
+        address: $("#tAddress")[0].value,
+        needsTransportation: $("#tTransport")[0].checked
       }
 
 
