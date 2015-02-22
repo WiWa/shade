@@ -5,16 +5,6 @@ init_problems = function (){
   return problems_list
 }
 
-
-make_query_array_contains = function (filter_array){
-  var ret = [];
-  for(var i = 0; i < filter_array.length; i++){
-    var q = new Parse.Query(ResourceData);
-    ret.push(q.contains(filter_array[i][0], filter_array[i][1]))
-  }
-  return ret;
-}
-
 resourceQuery_serviceType = function (problem, needTransport){
     var query = new Parse.Query(ResourceData);
     query.contains('serviceType', problem)
@@ -37,7 +27,6 @@ resourceQuery_serviceType = function (problem, needTransport){
                 var ret = {problem: problem, resources:res}
                 var previous_list = Session.get('resourceResultsWithProblemsList')
                 previous_list.push(ret)
-                console.log("", problem, ": ", previous_list)
                 Session.set('resourceResultsWithProblemsList', previous_list)
                 //console.log(Session.get('resourceResultsWithProblemsList'))
               },
@@ -46,6 +35,16 @@ resourceQuery_serviceType = function (problem, needTransport){
               }
       });
     }
+}
+
+
+make_query_array_contains = function (filter_array){
+  var ret = [];
+  for(var i = 0; i < filter_array.length; i++){
+    var q = new Parse.Query(ResourceData);
+    ret.push(q.contains(filter_array[i][0], filter_array[i][1]))
+  }
+  return ret;
 }
 
 resourceQuery_or = function(filterStr){
