@@ -44,6 +44,7 @@ if(Meteor.isClient){
           else{
             text += "Not on Bus Route"
           }
+          text += "\n"
         }
         text += "\n \n"
       }
@@ -70,6 +71,7 @@ if(Meteor.isClient){
           else{
             text += "Not on Bus Route"
           }
+          text += "\n"
         }
         text += "\n \n"
       }
@@ -100,6 +102,7 @@ if(Meteor.isClient){
           else{
             text += "Not on Bus Route"
           }
+          text += "\n"
         }
         text += "\n \n"
       }
