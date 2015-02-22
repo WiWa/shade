@@ -3,11 +3,6 @@ if (Meteor.isClient) {
   Session.setDefault('view', 'start')
   Session.setDefault('patientResultsList', [])
 
-  Template.router.helpers({
-    view_queries: function(){
-      return Session.get('view') == 'queries';
-    }
-  })
 
   Template.start.helpers({
     patient_results: function(){
@@ -17,8 +12,8 @@ if (Meteor.isClient) {
 
   Template.start.events({
     'click button': function () {
-      Session.set('view', 'queries');
-      window.location.href = "./queries"
+     // Session.set('view', 'queries');
+      window.location.href = Router.path('queries')
     },
 
     'keypress #patientName': function(event){
@@ -96,17 +91,25 @@ if (Meteor.isClient) {
   */
 
   Template.editPatient.events({
-    'submit #form_updatePatient': function(event){
+    'click #updatePatientBtn': function(){
 
-      var info = event.target
       var _id = this._id
 
       var update = {
-        first: info.tFirst,
-        last: info.tLast,
-        email: info.tEmail,
-        phone: info.tPhone,
-        address: info.tAddress
+        first: $("#tFirst")[0].value,
+        last: $("#tLast")[0].value,
+        email: $("#tEmail")[0].value,
+        phone: $("#tPhone")[0].value,
+        address: $("#tAddress")[0].value
+      }
+
+      for (var k in update){
+        if(update[k]){
+          update[k] = update[k].value
+        }
+        else{
+          update[k] = ""
+        }
       }
 
       var problems = $("#tableProblems input")
@@ -122,7 +125,15 @@ if (Meteor.isClient) {
 
       console.log(update)
 
-     return false 
+      Meteor.call('updatePatient', _id, update, function(err, ret){
+        if(err){
+          alert("Error in Update: " + err)
+        }
+        else{
+          window.location.href = Router.path("start")
+        }
+      })
+
     }
   })
 

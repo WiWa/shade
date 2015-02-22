@@ -19,7 +19,8 @@ if (Meteor.isServer) {
 Meteor.methods({
   getPatientsByName: function(last_first){ return getPatientsByName(last_first) },
   getPatientById: function(id){ return getPatientById(id) },
-  createNewPatient: function(last_first){ return createNewPatient(last_first) }
+  createNewPatient: function(last_first){ return createNewPatient(last_first) },
+  updatePatient: function(id, updateObj){ updatePatient(id, updateObj) }
 })
 
 function getPatientsByName(last_first){
@@ -47,7 +48,12 @@ function createNewPatient(last_first){
   newPatient = new Patient(last_first)
   new_id = Patients.insert(newPatient)
   newPatient._id = new_id
-  return newPatient
+  return newPatient 
+}
+function updatePatient(id, updateObj){
+  console.log("PreUpdate: ", Patients.findOne({_id: id}))
+  Patients.update({_id: id}, { $set: updateObj })
+  console.log("PostUpdate: ", Patients.findOne({_id: id}))
 }
 
 function last_first_to_array(last_first){
