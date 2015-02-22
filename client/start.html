@@ -1,0 +1,58 @@
+<template name="start">
+
+<div class="container-fluid">
+
+  <h1>Shade for Shade Tree Clinic</h1>
+  <div class='botSpace'>
+  <input type='text' class='' id='patientName' placeholder='Patient Name: [Last], [First]' />
+  <input type='button' class='btn btn-lg btn-primary' id='searchPatientBtn' value='Search' />
+  <input type='button' class='btn btn-lg btn-success' id='createPatientBtn' value='Create New Patient' />
+  </div>
+  <div class='botSpace'>
+  <input type='button' class='btn btn-lg btn-warning' id='goToProblemsBtn' value='Search by Issues' />
+  </div>
+  <div id="div_patientResults">
+    {{#if patient_results}}
+    <table class="table_results patients">
+      <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Problems</th>
+      <th></th>
+      <th></th>
+      </tr>
+    {{#each patient_results}}
+      <tr>
+      <td>{{last}}, {{first}}</td>
+      <td>{{email}}</td>
+      <td>{{phone}}</td>
+      <td>{{address}}</td>
+      <td class="td_problems {{this._id}}">
+        {{#each problems}}
+          {{this}},
+        {{/each}}
+      </td>
+      <td><input type='button' class="findResourcesForPatient" name="{{this._id}}" value='Find Resources' /></td>
+      <td><a href="{{pathFor 'edit_patient' _id=this._id}}" class='btn btn-default'>Edit Patient</a></td>
+      </tr>
+    {{/each}}
+    </table>
+    {{/if}}
+  </div>
+  <div id="div_resourceResults">
+    {{#if resource_results}}
+      <table class="table_results resources">
+      {{#each resource_results}}
+        <tr>
+        <td>
+          {{name}}
+        </td>
+        </tr>
+      {{/each}}
+      </table>
+    {{/if}}
+  </div>
+</div>
+</template>

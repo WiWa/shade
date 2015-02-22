@@ -1,10 +1,13 @@
 <template name='findResourcesRefer'>
 
-  <div id="div_referPatient">
+<div class="container-fluid">
+  <div id="div_referPatient" class="botSpace">
     {{#if email}}
-      <input type='button' id='referEmailBtn' value='Refer Patient Via Email'/>
+      <input type='button' class='btn btn-lg btn-success' id='referEmailBtn' value='Refer Patient Via Email'/>
     {{else}}
       <h3>No Email Found for Patient!</h3>
+      <input type='text' id='quickEmail' Placeholder='Enter an email'/>
+      <input type='button' class='btn btn-lg btn-success' id='referEmailAnywaysBtn' value='Refer Patient Via Email'/>
     {{/if}}
   </div>
 
@@ -13,8 +16,8 @@
       <table class="table_results resources">
       {{#each resource_results_with_problems}}
         <tr>
-        <td>
-          {{problem}}
+        <td valign="top">
+          <h3 style="margin-top:0">{{problem}}</h3>
         </td>
         <td>
           {{#each resources}}
@@ -26,5 +29,36 @@
       </table>
     {{/if}}
   </div>
+</div>
+
+</template>
+
+<template name='findResources'>
+
+<div class="container-fluid">
+  <div class="botSpace">
+      <input type='text' id='quickEmail' Placeholder='Enter an email'/>
+      <input type='button' class='btn btn-lg btn-success' id='referEmailAnywaysBtn' value='Refer Patient Via Email'/>
+  </div>
+
+  <div id="div_resourceResults">
+    {{#if resource_results_with_problems}}
+      <table class="table_results resources">
+      {{#each resource_results_with_problems}}
+        <tr>
+        <td valign="top">
+          <h3 style="margin-top:0">{{problem}}</h3>
+        </td>
+        <td>
+          {{#each resources}}
+            {{this.name}}<br/>
+          {{/each}}
+        </td>
+        </tr>
+      {{/each}}
+      </table>
+    {{/if}}
+  </div>
+</div>
 
 </template>

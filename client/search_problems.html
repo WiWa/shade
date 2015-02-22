@@ -1,0 +1,12 @@
+<template name='searchProblems'>
+<div class="container-fluid">
+<div id="div_problems">  
+  {{#each problems_arr}}
+    <td><label><input type="checkbox" name="{{this}}">{{this}}</label></td>
+  {{/each}}
+</div>
+
+<input type='button' class='btn btn-lg btn-warning' id="problemSearchBtn" value="Search!" />
+
+</div>
+</template>

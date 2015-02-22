@@ -34,4 +34,6 @@ Router.map( function(){
       return {_id: this.params._id}
     }
   })
+  this.route('search_problems')
+  this.route('find_resources')
 })

@@ -29,7 +29,7 @@ if(Meteor.isClient){
           alert("Error: "+ err)
         }
         else if (ret.length == 0){
-          console.log("No such patient!")
+          alert("No such patient!")
         }
         else{
           Session.set("patientResultsList", ret)
@@ -62,6 +62,10 @@ if(Meteor.isClient){
         resourceQuery_serviceType(problems[i])  // Using Apply somehow fails
       }
       Router.go('find_resources_refer', {_id: this._id})
+    },
+
+    'click #goToProblemsBtn': function(){
+      Router.go('search_problems')
     }
 
   });

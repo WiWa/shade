@@ -1,17 +1,38 @@
 /* CSS declarations go here */
-*{
-  font-family:sans-serif;
-}
-div {
-  margin-left: 20px;
+
+/*div {
+  border-style: solid;
+  border-width: 1px;
+  border-color: blue;
+}*/
+
+body {
+  background-image: url("http://i.ytimg.com/vi/o4gXJxG-BSo/maxresdefault.jpg");
+  background-size:cover;
+  background-repeat: no-repeat;
+  color:white;
 }
 
-form{
-  text-align: center;
+.btn {
+  height:40px;
+  border-radius: 3px;
+}
+
+.botSpace{
+  margin-bottom:30px;
+}
+
+input{
+  height:40px;
+  color:black;
 }
 
 .patients th {
   width: 150px;
+}
+
+#patientName{
+  width:280px;
 }
 
 #tableProblems{
@@ -19,13 +40,17 @@ form{
   text-align: left
 }
 
+table {
+  background: rgba(120,120,120,.5);
+}
+
 tr {
   min-height: 120px;
   width: 400px;
-  border-top: 2px solid grey;
-  border-bottom: 2px solid grey;
 }
 
 td{
+  padding: 6px 6px 6px 6px;
   min-width: 150px;
+  border: 2px 2px 2px 2px solid grey;
 }
