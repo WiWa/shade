@@ -36,7 +36,14 @@ if(Meteor.isClient){
         text = text + "Problem: " + resultsArr[i]['problem'] + "\n" 
                 + "------------------------------------------" + "\n"
         for(var j = 0; j < resultsArr[i]['resources'].length; j++){
-          text = text + resultsArr[i]['resources'][j]['name'] + "\n"
+          var resource = resultsArr[i]['resources'][j]
+          text = text + resource['name'] + "\n"
+          if(resource.transport){
+            text = text + "On Bus Route: " + (resource.transportRoute || "")
+          }
+          else{
+            text += "Not on Bus Route"
+          }
         }
         text += "\n \n"
       }
@@ -55,7 +62,44 @@ if(Meteor.isClient){
         text = text + "Problem: " + resultsArr[i]['problem'] + "\n" 
                 + "------------------------------------------" + "\n"
         for(var j = 0; j < resultsArr[i]['resources'].length; j++){
-          text = text + resultsArr[i]['resources'][j]['name'] + "\n"
+        var resource = resultsArr[i]['resources'][j]
+          text = text + resource['name'] + "\n"
+          if(resource.transport){
+            text = text + "On Bus Route: " + (resource.transportRoute || "")
+          }
+          else{
+            text += "Not on Bus Route"
+          }
+        }
+        text += "\n \n"
+      }
+      Meteor.call('sendEmail',
+            recipient,
+            'shadetree@clinic.com',
+            'Hello from Shade Tree Clinic!',
+            text);
+    }
+  })
+
+  Template.findResources.events({
+
+    'click #referEmailAnywaysBtn': function(){
+      var recipient = $("#quickEmail")[0].value
+      var resultsArr = Session.get("resourceResultsWithProblemsList")
+      var text = ""
+      for(var i = 0; i < resultsArr.length; i++){
+        text = text + "Problem: " + resultsArr[i]['problem'] + "\n" 
+                + "------------------------------------------" + "\n"
+
+        for(var j = 0; j < resultsArr[i]['resources'].length; j++){
+        var resource = resultsArr[i]['resources'][j]
+          text = text + resource['name'] + "\n"
+          if(resource.transport){
+            text = text + "On Bus Route: " + (resource.transportRoute || "")
+          }
+          else{
+            text += "Not on Bus Route"
+          }
         }
         text += "\n \n"
       }
