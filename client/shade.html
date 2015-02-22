@@ -8,14 +8,6 @@
 
 </body>
 
-<template name="router">
-  {{view_queries}}
-  {{#if view_queries}}
-    {{> queries}}
-  {{else}}
-    {{> start}}
-  {{/if}}
-</template>
 
 <template name="start">
   <button>Click To Start</button>
@@ -35,6 +27,7 @@
       <th>Address</th>
       <th>Problems</th>
       <th></th>
+      <th></th>
       </tr>
     {{#each patient_results}}
       <tr>
@@ -43,15 +36,29 @@
       <td>{{email}}</td>
       <td>{{phone}}</td>
       <td>{{address}}</td>
-      <td>
+      <td class="td_problems {{this._id}}">
         {{#each problems}}
           {{this}},
         {{/each}}
       </td>
+      <td><input type='button' class="findResourcesForPatient" name="{{this._id}}" value='Find Resources' /></td>
       <td><a href="{{pathFor 'edit_patient' _id=this._id}}">Edit Patient</a></td>
       </tr>
     {{/each}}
     </table>
+    {{/if}}
+  </div>
+  <div id="div_resourceResults">
+    {{#if resource_results}}
+      <table class="table_results resources">
+      {{#each resource_results}}
+        <tr>
+        <td>
+          {{name}}
+        </td>
+        </tr>
+      {{/each}}
+      </table>
     {{/if}}
   </div>
 

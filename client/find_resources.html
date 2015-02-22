@@ -1,0 +1,17 @@
+<template name='findResourcesRefer'>
+
+  <div id="div_resourceResults">
+    {{#if resource_results}}
+      <table class="table_results resources">
+      {{#each resource_results}}
+        <tr>
+        <td>
+          {{name}}
+        </td>
+        </tr>
+      {{/each}}
+      </table>
+    {{/if}}
+  </div>
+
+</template>

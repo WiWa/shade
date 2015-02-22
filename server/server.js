@@ -82,4 +82,3 @@ function Patient(last_first){
   
   this.problems = ["Alcohol", "Support Group", "Dental", "Medical Care"]
 }
-
