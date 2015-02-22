@@ -57,7 +57,10 @@ if(Meteor.isClient){
       var problems = $(".td_problems."+this._id)[0].innerHTML.toString().split(",")
       problems = problems.map(function(str){return str.trim()})
       console.log(problems)
-      resourceQuery_serviceType(problems[0])
+      Session.set('resourceResultsWithProblemsList', [])
+      for(var i = 0; i < problems.length; i++){
+        resourceQuery_serviceType(problems[i])  // Using Apply somehow fails
+      }
       Router.go('find_resources_refer', {_id: this._id})
     }
 

@@ -16,22 +16,21 @@ make_query_array_contains = function (filter_array){
 }
 
 resourceQuery_serviceType = function (problem){
-      resourceResults = []
-      filterStr = problem
       var query = new Parse.Query(ResourceData);
       query.contains('serviceType', problem)
+      query.limit(5);
       query.find({
               success: function(results) {
-                //document.write("Successfully retrieved " + results.length + " resources.");
                 var res = []
-                //res[0] = filterStr + ": Successfully retrieved " + results.length + " resources.";
                 for (var i = 0; i < results.length; i++) {
                   var object = results[i];
-                  res.push({name: object.get("clinicalResourceName")})
-                  //str = str + "<br> " + object.id + ' --- ' + object.get("clinicalResourceName") + ' --- ' + object.get('busRoute');
+                  res.push({ name: object.get("clinicalResourceName")})
                 }
-                Session.set('resourceResultsList', res)
-                console.log(Session.get('resourceResultsList'))
+                var ret = {problem: problem, resources:res}
+                var previous_list = Session.get('resourceResultsWithProblemsList')
+                previous_list.push(ret)
+                Session.set('resourceResultsWithProblemsList', previous_list)
+                //console.log(Session.get('resourceResultsWithProblemsList'))
               },
               error: function(error) {
                 alert("Error: " + error.code + " " + error.message);
@@ -91,22 +90,7 @@ if (Meteor.isClient) {
   Session.setDefault('view', 'start')
   Session.setDefault('patientResultsList', [])
   Session.setDefault('resourceResultsList', [])
-
-
-  Template.findResourcesRefer.helpers({
-    
-    problems: function(){
-      var patient = Session.get('Patient')
-      if(patient){
-        return patient.problems
-      }
-      return false
-    },
-    resource_results:function(){
-      return Session.get('resourceResultsList');
-    }
-
-  })
+  Session.setDefault('resourceResultsWithProblemsList', [])
 
   Template.queries.events({
 
