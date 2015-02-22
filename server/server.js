@@ -80,5 +80,5 @@ function Patient(last_first){
 
   this.address = ""
   
-  this.problems = ["Alcohol", "Support Group", "Dental", "Medical Care"]
+  this.problems = ["Alcohol", "Support group", "Dental", "Medical Care"]
 }

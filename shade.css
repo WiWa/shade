@@ -1,10 +1,11 @@
 /* CSS declarations go here */
-
+*{
+  font-family:sans-serif;
+}
 div {
   border-style: solid;
   border-width: 1px;
   border-color: blue;
-  text-align:center;
 }
 
 form{
@@ -18,4 +19,15 @@ form{
 #tableProblems{
   margin: 0 auto 0 auto;
   text-align: left
+}
+
+tr {
+  min-height: 120px;
+  width: 400px;
+  border-top: 2px solid grey;
+  border-bottom: 2px solid grey;
+}
+
+td{
+  min-width: 150px;
 }

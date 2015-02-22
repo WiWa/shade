@@ -1,5 +1,5 @@
 init_problems = function (){
-  var problems_list = ["Alcohol", "Support Group", "Legal", "Senior",
+  var problems_list = ["Alcohol", "Support group", "Legal", "Senior",
                     "Dental", "Medical Care", "Mental Illness", "Family"]
   problems_list.sort()
   return problems_list
@@ -16,9 +16,10 @@ make_query_array_contains = function (filter_array){
 }
 
 resourceQuery_serviceType = function (problem){
-      var query = new Parse.Query(ResourceData);
-      query.contains('serviceType', problem)
-      query.limit(5);
+    var query = new Parse.Query(ResourceData);
+    query.contains('serviceType', problem)
+    query.limit(5);
+    if(problem){
       query.find({
               success: function(results) {
                 var res = []
@@ -29,6 +30,7 @@ resourceQuery_serviceType = function (problem){
                 var ret = {problem: problem, resources:res}
                 var previous_list = Session.get('resourceResultsWithProblemsList')
                 previous_list.push(ret)
+                console.log("", problem, ": ", previous_list)
                 Session.set('resourceResultsWithProblemsList', previous_list)
                 //console.log(Session.get('resourceResultsWithProblemsList'))
               },
@@ -36,6 +38,7 @@ resourceQuery_serviceType = function (problem){
                 alert("Error: " + error.code + " " + error.message);
               }
       });
+    }
 }
 
 resourceQuery_or = function(filterStr){
