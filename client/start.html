@@ -34,6 +34,9 @@
         {{#each problems}}
           {{this}},
         {{/each}}
+        {{#if needsTransportation}}
+          Needs Transportation
+        {{/if}}
       </td>
       <td><input type='button' class="findResourcesForPatient" name="{{this._id}}" value='Find Resources' /></td>
       <td><a href="{{pathFor 'edit_patient' _id=this._id}}" class='btn btn-default'>Edit Patient</a></td>

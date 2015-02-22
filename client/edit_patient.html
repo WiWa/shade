@@ -7,6 +7,7 @@
     <input type='text' id='tEmail' placeholder='Email' value="{{email}}"/> <br/>
     <input type='text' id='tPhone' placeholder='Phone' value="{{phone}}" />{{phone}} <br/>
     <input type='text' id='tAddress' placeholder='Address' value="{{address}}"/> <br/>
+    <label><input type='checkbox' id='tTransport' checked={{needTransportation}}/>Needs Transportation?</label><br/>
   <table id="tableProblems">
   {{#each problems_arr}}
     <td><label><input type="checkbox" checked={{checked}} name="{{problem}}">{{problem}}</label></td>

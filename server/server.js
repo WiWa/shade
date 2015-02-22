@@ -92,9 +92,10 @@ function Patient(last_first){
 
   this.email = ""
   this.phone = ""
-  //this.texting = false
 
   this.address = ""
+
+  this.needsTransportation = true
   
   this.problems = ["Alcohol", "Support group", "Dental", "Medical Care"]
 }

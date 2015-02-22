@@ -15,9 +15,12 @@ make_query_array_contains = function (filter_array){
   return ret;
 }
 
-resourceQuery_serviceType = function (problem){
+resourceQuery_serviceType = function (problem, needTransport){
     var query = new Parse.Query(ResourceData);
     query.contains('serviceType', problem)
+    //if(needTransport){
+      query.equalTo('siteOnBusRoute', true)
+    //}
     query.limit(5);
     if(problem){
       query.find({
@@ -25,7 +28,11 @@ resourceQuery_serviceType = function (problem){
                 var res = []
                 for (var i = 0; i < results.length; i++) {
                   var object = results[i];
-                  res.push({ name: object.get("clinicalResourceName")})
+                  res.push({ 
+                            name: object.get("clinicalResourceName"),
+                            transport: object.get('siteOnBusRoute'),
+                            transportRoute: object.get('busRoute')
+                          })
                 }
                 var ret = {problem: problem, resources:res}
                 var previous_list = Session.get('resourceResultsWithProblemsList')

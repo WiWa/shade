@@ -21,7 +21,15 @@
         </td>
         <td>
           {{#each resources}}
-            {{this.name}}<br/>
+            <div style="margin-bottom:8px">
+            <b>{{this.name}}</b><br/>
+            {{#if this.transport}}
+              On Bus Route: {{this.transportRoute}}
+            {{else}}
+              Not on Bus Route
+            {{/if}}
+            <br/>
+            </div>
           {{/each}}
         </td>
         </tr>
@@ -52,6 +60,10 @@
         <td>
           {{#each resources}}
             {{this.name}}<br/>
+            {{this.transport}}<br/>
+            {{#if this.transport}}
+              {{this.transportRoute}}<br/>
+            {{/if}}
           {{/each}}
         </td>
         </tr>

@@ -10,10 +10,6 @@ if(Meteor.isClient){
     })
   
     Template.start.events({
-    'click button': function () {
-     // Session.set('view', 'queries');
-      Router.go('queries')
-    },
 
     'keypress #patientName': function(event){
       if (event.charCode == 13){
@@ -53,15 +49,20 @@ if(Meteor.isClient){
     },
 
     'click .findResourcesForPatient': function (){
-      //console.log(this._id)
+      /*console.log(this._id)
       var problems = $(".td_problems."+this._id)[0].innerHTML.toString().split(",")
       problems = problems.map(function(str){return str.trim()})
-      console.log(problems)
-      Session.set('resourceResultsWithProblemsList', [])
-      for(var i = 0; i < problems.length; i++){
-        resourceQuery_serviceType(problems[i])  // Using Apply somehow fails
-      }
-      Router.go('find_resources_refer', {_id: this._id})
+      */
+      Meteor.call('getPatientById', this._id, function(err, ret){
+        var problems = ret.problems
+        console.log(problems)
+        Session.set('resourceResultsWithProblemsList', [])
+        for(var i = 0; i < problems.length; i++){
+          resourceQuery_serviceType(problems[i], ret.needTransportation)  // Using Apply somehow fails
+        }
+        Router.go('find_resources_refer', {_id: ret._id})
+      })
+      
     },
 
     'click #goToProblemsBtn': function(){
