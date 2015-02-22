@@ -18,9 +18,9 @@ make_query_array_contains = function (filter_array){
 resourceQuery_serviceType = function (problem, needTransport){
     var query = new Parse.Query(ResourceData);
     query.contains('serviceType', problem)
-    //if(needTransport){
+    if(needTransport){
       query.equalTo('siteOnBusRoute', true)
-    //}
+    }
     query.limit(5);
     if(problem){
       query.find({

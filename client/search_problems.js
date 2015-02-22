@@ -14,12 +14,12 @@ if(Meteor.isClient){
           problems.push(all_problems[i].name)
         }
       }
-      console.log(problems)
+      var transport = $("#transport")[0].checked
+      console.log(transport)
       Session.set('resourceResultsWithProblemsList', [])
       for(var i = 0; i < problems.length; i++){
-        resourceQuery_serviceType(problems[i])  // Using Apply somehow fails
+        resourceQuery_serviceType(problems[i], transport)  // Using Apply somehow fails
       }
-      console.log(Session.get('resourceResultsWithProblemsList'))
       Router.go('find_resources')
     }
   })
