@@ -58,7 +58,7 @@ if(Meteor.isClient){
         console.log(problems)
         Session.set('resourceResultsWithProblemsList', [])
         for(var i = 0; i < problems.length; i++){
-          resourceQuery_serviceType(problems[i], ret.needTransportation)  // Using Apply somehow fails
+          resourceQuery_serviceType(problems[i], ret.needsTransportation)  // Using Apply somehow fails
         }
         Router.go('find_resources_refer', {_id: ret._id})
       })

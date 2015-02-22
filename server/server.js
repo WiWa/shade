@@ -67,9 +67,9 @@ function createNewPatient(last_first){
   return newPatient 
 }
 function updatePatient(id, updateObj){
-  console.log("PreUpdate: ", Patients.findOne({_id: id}))
+  //console.log("PreUpdate: ", Patients.findOne({_id: id}))
   Patients.update({_id: id}, { $set: updateObj })
-  console.log("PostUpdate: ", Patients.findOne({_id: id}))
+  //console.log("PostUpdate: ", Patients.findOne({_id: id}))
 }
 
 function last_first_to_array(last_first){
@@ -97,5 +97,5 @@ function Patient(last_first){
 
   this.needsTransportation = true
   
-  this.problems = ["Alcohol", "Support group", "Dental", "Medical Care"]
+  this.problems = []
 }
