@@ -1,0 +1,20 @@
+<template name='editPatient'>
+
+<form id='form_updatePatient'>
+  {{#with patient}}
+    <input type='text' id='tFirst' placeholder='First Name' value="{{first}}"/><br/>
+    <input type='text' id='tLast' placeholder='Last Name' value="{{last}}"/> <br/>
+    <input type='text' id='tEmail' placeholder='Email' value="{{email}}"/> <br/>
+    <input type='text' id='tPhone' placeholder='Phone' value="{{phone}}" />{{phone}} <br/>
+    <input type='text' id='tAddress' placeholder='Address' value="{{address}}"/> <br/>
+  <table id="tableProblems">
+  {{#each problems_arr}}
+    <tr><td><input type="checkbox" checked={{checked}} name="{{problem}}"><label for="{{problem}}">{{problem}}</label></td></tr>
+  {{/each}}
+  </table>
+  {{/with}}
+
+  <input type='submit' id='submit_updatePatient' Value='Update Patient' /> <br/>
+</form>
+
+</template>

@@ -18,7 +18,8 @@ if (Meteor.isServer) {
 
 Meteor.methods({
   getPatientsByName: function(last_first){ return getPatientsByName(last_first) },
-  createNewPatient: function(last_first){ createNewPatient(last_first) }
+  getPatientById: function(id){ return getPatientById(id) },
+  createNewPatient: function(last_first){ return createNewPatient(last_first) }
 })
 
 function getPatientsByName(last_first){
@@ -27,12 +28,26 @@ function getPatientsByName(last_first){
   last = arr[0].trim();
   first = arr[1].trim();
 
-  return Patients.find({last: {$regex: new RegExp("^" + last + "$", "i") },
+  var patients 
+  if(first){
+    patients = Patients.find({last: {$regex: new RegExp("^" + last + "$", "i") },
                         first: {$regex: new RegExp("^" + first + "$", "i") }}).fetch()
+  }
+  else{
+    patients = Patients.find({last: {$regex: new RegExp("^" + last + "$", "i") }}).fetch()
+  }
+  return patients
+}
+
+function getPatientById(id){
+  return Patients.findOne({_id: id})
 }
 
 function createNewPatient(last_first){
-  Patients.insert(new Patient(last_first))
+  newPatient = new Patient(last_first)
+  new_id = Patients.insert(newPatient)
+  newPatient._id = new_id
+  return newPatient
 }
 
 function last_first_to_array(last_first){
@@ -53,11 +68,12 @@ function Patient(last_first){
   this.last = last
 
 
-  this.email = "no_email@aol.com"
-  this.phone = "1-555-123-1234"
-  this.texting = false
+  this.email = ""
+  this.phone = ""
+  //this.texting = false
 
-  this.street_address = "123 Fake Street"
+  this.address = ""
   
-  this.problems = ["Everything", "Nothing"]
+  this.problems = ["Alcohol", "Support Group", "Dental", "Medical Care"]
 }
+

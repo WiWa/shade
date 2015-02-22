@@ -18,6 +18,7 @@ if (Meteor.isClient) {
   Template.start.events({
     'click button': function () {
       Session.set('view', 'queries');
+      window.location.href = "./queries"
     },
 
     'keypress #patientName': function(event){
@@ -46,16 +47,86 @@ if (Meteor.isClient) {
     'click #createPatientBtn': function () {
       var last_first = $('#patientName').val()
       console.log('Create Patient:  ' + last_first)
-      Meteor.call('createNewPatient', last_first, function(err){
+      Meteor.call('createNewPatient',last_first, function(err, patient){
         if(err){
-          alert("Error: " + err)
+          alert("Creation Error:  " + err)
         }
         else{
-          console.log("Creation Success!")
+          window.location.href = "./edit_patient/" + patient._id
+          console.log('Create Patient:  ' + last_first)
         }
       })
     }
   });
+
+  Template.editPatient.helpers({
+    patient: function(){
+      //console.log(this._id)
+      var ret = Session.get('Patient')
+      if(ret){
+        var problems_arr = init_problems()
+        ret.problems_arr = []
+        for(var i = 0; i < problems_arr.length; i++){
+          var problem = problems_arr[i]
+          var hasProblem = (ret.problems.indexOf(problem) + 1) > 0// equivalent to includes()
+          ret.problems_arr.push({
+            problem: problem, 
+            checked: hasProblem
+                              })
+        }
+      }
+        //console.log(ret.problems_arr)
+      return ret
+    }/*,
+    problems_arr: function(){
+        var problems_arr = init_problems()
+        return problems_arr
+    }*/
+  })
+/*
+  Template.editPatient.rendered = function(){    
+    if(Session.get('Patient')){
+      var problems = Session.get('Patient').problems
+
+      for(var i = 0; i < problems.length; i++){
+        $($('#tableProblems input[name="'+problems[i]+'"]')[0]).prop('checked', true)
+      }
+    }
+  }
+  */
+
+  Template.editPatient.events({
+    'submit #form_updatePatient': function(event){
+
+      var info = event.target
+      var _id = this._id
+
+      var update = {
+        first: info.tFirst,
+        last: info.tLast,
+        email: info.tEmail,
+        phone: info.tPhone,
+        address: info.tAddress
+      }
+
+      var problems = $("#tableProblems input")
+      var updateProblems = []
+      for(var i = 0; i < problems.length; i++){
+        var problem = problems[i]
+        if(problem.checked){
+          updateProblems.push(problem.name)
+        }
+      }
+
+      update.problems = updateProblems
+
+      console.log(update)
+
+     return false 
+    }
+  })
+
+
 
   Template.queries.events({
 
@@ -142,4 +213,11 @@ function parse_init(){
               }
               });
               */        
+}
+
+function init_problems(){
+  var problems_list = ["Alcohol", "Support Group", "Legal", "Senior",
+                    "Dental", "Medical Care", "Mental Illness", "Family"]
+  problems_list.sort()
+  return problems_list
 }

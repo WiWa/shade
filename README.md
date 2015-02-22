@@ -8,6 +8,7 @@ Meh, will implement later
 Yumminess working  
 Want to give problems via checkboxes  
 Throw boxes at them  
+Protip need to be able to edit  
   
 
 ###Resources:  

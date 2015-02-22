@@ -5,7 +5,7 @@
 <body>
   <h1>Welcome to Meteor!</h1>
 
-  {{> router}}
+
 </body>
 
 <template name="router">
@@ -25,14 +25,16 @@
   <input type='button' id='createPatientBtn' value='Create New Patient' />
   </div>
   <div id="div_patientResults">
-    {{patient_results}}
+    {{#if patient_results}}
     <table class="table_results patients">
       <tr>
       <th>Index?!</th>
       <th>Name</th>
       <th>Email</th>
       <th>Phone</th>
+      <th>Address</th>
       <th>Problems</th>
+      <th></th>
       </tr>
     {{#each patient_results}}
       <tr>
@@ -40,14 +42,17 @@
       <td>{{last}}, {{first}}</td>
       <td>{{email}}</td>
       <td>{{phone}}</td>
+      <td>{{address}}</td>
       <td>
         {{#each problems}}
           {{this}},
         {{/each}}
       </td>
+      <td><a href="{{pathFor 'edit_patient' _id=this._id}}">Edit Patient</a></td>
       </tr>
     {{/each}}
     </table>
+    {{/if}}
   </div>
 
 </template>
