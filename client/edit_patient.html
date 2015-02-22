@@ -9,7 +9,7 @@
     <input type='text' id='tAddress' placeholder='Address' value="{{address}}"/> <br/>
   <table id="tableProblems">
   {{#each problems_arr}}
-    <tr><td><input type="checkbox" checked={{checked}} name="{{problem}}"><label for="{{problem}}">{{problem}}</label></td></tr>
+    <tr><td><label><input type="checkbox" checked={{checked}} name="{{problem}}">{{problem}}</label></td></tr>
   {{/each}}
   </table>
   {{/with}}

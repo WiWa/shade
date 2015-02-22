@@ -20,7 +20,23 @@ Meteor.methods({
   getPatientsByName: function(last_first){ return getPatientsByName(last_first) },
   getPatientById: function(id){ return getPatientById(id) },
   createNewPatient: function(last_first){ return createNewPatient(last_first) },
-  updatePatient: function(id, updateObj){ updatePatient(id, updateObj) }
+  updatePatient: function(id, updateObj){ updatePatient(id, updateObj) },
+  
+    sendEmail: function (to, from, subject, text) {
+    check([to, from, subject, text], [String]);
+
+    // Let other method calls from the same client start running,
+    // without waiting for the email sending to complete.
+    this.unblock();
+
+    Email.send({
+      to: to,
+      from: from,
+      subject: subject,
+      text: text
+    });
+  }
+
 })
 
 function getPatientsByName(last_first){

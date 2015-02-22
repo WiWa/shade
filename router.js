@@ -1,9 +1,6 @@
 Router.map( function(){
   this.route('start', {
-    path: '/',
-    data: function(){
-      Session.set("patientResultsList", null)
-    }
+    path: '/'
   })
   this.route('edit_patient', {
     path: 'edit_patient/:_id',

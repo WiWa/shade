@@ -1,6 +1,6 @@
 init_problems = function (){
   var problems_list = ["Alcohol", "Support group", "Legal", "Senior",
-                    "Dental", "Medical Care", "Mental Illness", "Family"]
+                    "Dental", "Medical Care", "Mental Health", "Family"]
   problems_list.sort()
   return problems_list
 }

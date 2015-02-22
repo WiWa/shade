@@ -20,4 +20,25 @@ if(Meteor.isClient){
 
   })
 
+  Template.findResourcesRefer.events({
+    'click #referEmailBtn': function(){
+      var recipient = Session.get("patient_email")
+      var resultsArr = Session.get("resourceResultsWithProblemsList")
+      var text = ""
+      for(var i = 0; i < resultsArr.length; i++){
+        text = text + "Problem: " + resultsArr[i]['problem'] + "\n" 
+                + "------------------------------------------" + "\n"
+        for(var j = 0; j < resultsArr[i]['resources'].length; j++){
+          text = text + resultsArr[i]['resources'][j]['name'] + "\n"
+        }
+        text += "\n \n"
+      }
+      Meteor.call('sendEmail',
+            recipient,
+            'shadetree@clinic.com',
+            'Hello from Shade Tree Clinic!',
+            text);
+    }
+  })
+
 }
