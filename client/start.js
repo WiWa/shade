@@ -66,6 +66,10 @@ if(Meteor.isClient){
 
     'click #goToProblemsBtn': function(){
       Router.go('search_problems')
+    },
+
+    'click #feedbackBtn': function(){
+      Router.go('feedback')
     }
 
   });

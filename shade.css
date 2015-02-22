@@ -49,6 +49,13 @@ tr {
   width: 400px;
 }
 
+#commentArea{
+  min-height:150px;
+  min-width:400px;
+  resize:both;
+  color:black;
+}
+
 td{
   padding: 6px 6px 6px 6px;
   min-width: 150px;

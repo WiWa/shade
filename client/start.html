@@ -2,7 +2,7 @@
 
 <div class="container-fluid">
 
-  <h1>Shade for Shade Tree Clinic</h1>
+  <h1>Shade for Shade Tree Clinic <input type='button' class='btn btn-lg' id='feedbackBtn' value="Give feedback!" /></h1><br/>
   <div class='botSpace'>
   <input type='text' class='' id='patientName' placeholder='Patient Name: [Last], [First]' />
   <input type='button' class='btn btn-lg btn-primary' id='searchPatientBtn' value='Search' />
@@ -10,6 +10,7 @@
   </div>
   <div class='botSpace'>
   <input type='button' class='btn btn-lg btn-warning' id='goToProblemsBtn' value='Search by Issues' />
+
   </div>
   <div id="div_patientResults">
     {{#if patient_results}}

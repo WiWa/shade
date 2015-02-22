@@ -36,4 +36,5 @@ Router.map( function(){
   })
   this.route('search_problems')
   this.route('find_resources')
+  this.route('feedback')
 })
