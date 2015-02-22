@@ -1,5 +1,13 @@
 <template name='findResourcesRefer'>
 
+  <div id="div_referPatient">
+    {{#if email}}
+      <input type='button' id='referEmailBtn' value='Refer Patient Via Email'/>
+    {{else}}
+      <h3>No Email Found for Patient!</h3>
+    {{/if}}
+  </div>
+
   <div id="div_resourceResults">
     {{#if resource_results_with_problems}}
       <table class="table_results resources">

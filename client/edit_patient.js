@@ -32,14 +32,6 @@ if(Meteor.isClient){
         address: $("#tAddress")[0].value
       }
 
-      for (var k in update){
-        if(update[k]){
-          update[k] = update[k].value
-        }
-        else{
-          update[k] = ""
-        }
-      }
 
       var problems = $("#tableProblems input")
       var updateProblems = []
