@@ -34,5 +34,4 @@ Router.map( function(){
       return {_id: this.params._id}
     }
   })
-  this.route('queries')
 })

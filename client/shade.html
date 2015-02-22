@@ -10,7 +10,6 @@
 
 
 <template name="start">
-  <button>Click To Start</button>
   <div>
   <input type='text' id='patientName' placeholder='Patient Name: [First], [Last]' />
   <input type='button' id='searchPatientBtn' value='Search' />
@@ -62,15 +61,4 @@
     {{/if}}
   </div>
 
-</template>
-
-<template name="queries">
-  <div>
-    <input type='text' id='filterForTrue' placeholder='Type a filter!' />
-    <input type='button' id='findResourcesBtn' value='Aww Yiss' />
-    
-    <b>This is an example of querying all resources that have a bus route and outputting the parse id, resource name, and bus route info:</b>
-    <p id="demo2"></p>
-    <p id="demo3"></p>
-  </div>
 </template>

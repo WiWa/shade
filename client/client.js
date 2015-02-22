@@ -95,21 +95,6 @@ if (Meteor.isClient) {
   Session.setDefault('resourceResultsList', [])
   Session.setDefault('resourceResultsWithProblemsList', [])
 
-  Template.queries.events({
-
-    'keypress #filterForTrue': function(event){
-      if (event.charCode == 13){
-        $('#findResourcesBtn').click()
-      }
-    },
-
-    'click #findResourcesBtn': function (){
-      var filterStr = $('#filterForTrue').val();
-      resourceQuery_or(filterStr)
-    }
-  })
-
-
 
 
 }
